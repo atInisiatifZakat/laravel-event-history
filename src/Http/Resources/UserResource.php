@@ -9,6 +9,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 final class UserResource extends JsonResource
 {
+    /**
+     * @return array
+     */
     public function toArray(Request $request)
     {
         return [
