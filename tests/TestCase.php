@@ -1,36 +1,47 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+declare(strict_types=1);
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
+namespace Inisiatif\EventHistory\Tests;
 
-class TestCase extends Orchestra
+use Orchestra\Testbench;
+use Inisiatif\EventHistory\EventHistories;
+use Illuminate\Contracts\Config\Repository;
+use Inisiatif\EventHistory\EventHistoryServiceProvider;
+
+abstract class TestCase extends Testbench\TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            SkeletonServiceProvider::class,
+            EventHistoryServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function defineEnvironment($app): void
     {
-        config()->set('database.default', 'testing');
+        \tap($app->make('config'), static function (Repository $config): void {
+            $config->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        $migration->up();
-        */
+            $config->set('database.connections.testing', [
+                'driver' => 'sqlite',
+                'database' => ':memory:',
+                'prefix' => '',
+            ]);
+        });
+    }
+
+    protected function defineDatabaseMigrations(): void
+    {
+        $this->loadLaravelMigrations();
+
+        $this->loadMigrationsFrom(Testbench\package_path('database/migrations'));
+    }
+
+    protected function defineRoutes($router): void
+    {
+        $router->group([], static function (): void {
+            EventHistories::routes();
+        });
     }
 }

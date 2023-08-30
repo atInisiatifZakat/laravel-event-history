@@ -1,17 +1,12 @@
 {
-    "name": ":vendor_name/:package_slug",
-    "description": ":package_description",
-    "keywords": [
-        ":vendor_name",
-        "laravel",
-        ":package_slug"
-    ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "name": "inisiatif/laravel-event-history",
+    "description": "Record event as history",
+    "homepage": "https://github.com/atInisiatifZakat/laravel-event-history",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Nuradiyana",
+            "email": "me@nooradiana.com",
             "role": "Developer"
         }
     ],
@@ -26,13 +21,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Inisiatif\\EventHistory\\": "src",
+            "Inisiatif\\EventHistory\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Inisiatif\\EventHistory\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,7 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Inisiatif\\EventHistory\\EventHistoryServiceProvider"
             ]
         }
     },
