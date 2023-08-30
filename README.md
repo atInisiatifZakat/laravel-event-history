@@ -25,10 +25,7 @@ php artisan migrate
 
 ## Usage
 
-```php
-$eventHistory = new Inisiatif\EventHistory();
-echo $eventHistory->echoPhrase('Hello, Inisiatif!');
-```
+// TODO
 
 ## Testing
 
