@@ -27,7 +27,7 @@ trait InteractWithEventHistories
             'description' => $description,
             'comment' => $comment,
             'user_id' => $userId,
-            'ip_address' => $ipAddress
+            'ip_address' => $ipAddress,
         ]);
     }
 }
