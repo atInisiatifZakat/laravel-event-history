@@ -27,8 +27,7 @@ trait InteractWithEventHistories
             'description' => $description,
             'comment' => $comment,
             'user_id' => $userId,
-            'ip_address' => $ipAddress,
-            'new_values' => \count($this->getChanges()) ? $this->getChanges() : $this->getAttributesForInsert(),
+            'ip_address' => $ipAddress
         ]);
     }
 }

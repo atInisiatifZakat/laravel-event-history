@@ -33,9 +33,6 @@ final class CreateEventHistoryUsingListenerTest extends TestCase
         $this->assertEquals($stubModel->getKey(), $history->getAttribute('model_id'));
         $this->assertSame($event->getHistoryDescription(), $history->getAttribute('description'));
         $this->assertSame('127.0.0.1', $history->getAttribute('ip_address'));
-        $this->assertSame('Foo', $history->getAttribute('new_values')['name']);
-        $this->assertSame('foo@bar.com', $history->getAttribute('new_values')['email']);
-        $this->assertSame('password', $history->getAttribute('new_values')['password']);
         $this->assertNull($history->getAttribute('user_id'));
         $this->assertNull($history->getAttribute('comment'));
     }
@@ -61,10 +58,6 @@ final class CreateEventHistoryUsingListenerTest extends TestCase
         $this->assertEquals($stubModel->getKey(), $history->getAttribute('model_id'));
         $this->assertSame($event->getHistoryDescription(), $history->getAttribute('description'));
         $this->assertSame('127.0.0.1', $history->getAttribute('ip_address'));
-
-        $this->assertSame('Foo', $history->getAttribute('new_values')['name']);
-        $this->assertSame('foo@bar.com', $history->getAttribute('new_values')['email']);
-        $this->assertSame('password', $history->getAttribute('new_values')['password']);
 
         $this->assertNull($history->getAttribute('user_id'));
         $this->assertNull($history->getAttribute('comment'));

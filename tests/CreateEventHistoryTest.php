@@ -33,10 +33,6 @@ final class CreateEventHistoryTest extends TestCase
 
         $this->assertSame('127.0.0.1', $history->getAttribute('ip_address'));
 
-        $this->assertSame('Foo', $history->getAttribute('new_values')['name']);
-        $this->assertSame('foo@bar.com', $history->getAttribute('new_values')['email']);
-        $this->assertSame('password', $history->getAttribute('new_values')['password']);
-
         $this->assertNull($history->getAttribute('user_id'));
     }
 
@@ -65,7 +61,6 @@ final class CreateEventHistoryTest extends TestCase
         $this->assertSame('Comment', $history->getAttribute('comment'));
 
         $this->assertSame('127.0.0.1', $history->getAttribute('ip_address'));
-        $this->assertSame(['name' => 'Foo Update'], $history->getAttribute('new_values'));
         $this->assertNull($history->getAttribute('user_id'));
     }
 }

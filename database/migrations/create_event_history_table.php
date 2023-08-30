@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('user_id', 36)->nullable();
             $table->text('comment')->nullable();
             $table->ipAddress()->nullable();
-            $table->text('new_values')->nullable();
             $table->timestamps();
 
             $table->index(['model_type', 'model_id']);
