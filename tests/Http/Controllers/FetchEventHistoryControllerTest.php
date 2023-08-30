@@ -28,11 +28,11 @@ final class FetchEventHistoryControllerTest extends TestCase
             'password' => 'password',
         ]);
 
-        EventHistoryFactory::new([
+        EventHistoryFactory::times(3)->create([
             'user_id' => UserFactory::new()->createOne()->getKey(),
             'model_type' => ModelStub::class,
             'model_id' => $stubModel->getKey(),
-        ])->createMany(3);
+        ]);
 
         $response = $this->getJson('/event-history/model/'.$stubModel->getKey())->assertSuccessful();
 
