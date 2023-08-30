@@ -37,7 +37,7 @@ abstract class TestCase extends Testbench\TestCase
 
         $workingPath = \defined('TESTBENCH_WORKING_PATH') ? TESTBENCH_WORKING_PATH : getcwd();
 
-        $this->loadMigrationsFrom($workingPath . DIRECTORY_SEPARATOR . 'database/migrations');
+        $this->loadMigrationsFrom($workingPath.DIRECTORY_SEPARATOR.'database/migrations');
     }
 
     protected function defineRoutes($router): void
