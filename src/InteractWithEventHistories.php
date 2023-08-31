@@ -28,7 +28,7 @@ trait InteractWithEventHistories
         );
     }
 
-    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null, string $userAgent = null): void
+    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null, string|null $userAgent = null): void
     {
         $this->histories()->create([
             'event' => $event,

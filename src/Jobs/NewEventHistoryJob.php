@@ -20,7 +20,8 @@ final class NewEventHistoryJob implements ShouldQueue
         private readonly string $description,
         private readonly ?string $comment = null,
         private readonly ?string $ipAddress = null,
-        private readonly null|string|int $userId = null
+        private readonly null|string|int $userId = null,
+        private readonly ?string $userAgent = null
     ) {
     }
 
@@ -31,7 +32,8 @@ final class NewEventHistoryJob implements ShouldQueue
             $this->description,
             $this->comment,
             $this->ipAddress,
-            $this->userId
+            $this->userId,
+            $this->userAgent
         );
     }
 }

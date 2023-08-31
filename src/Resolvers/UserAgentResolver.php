@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\Request;
 
 final class UserAgentResolver implements Resolver
 {
-    public static function resolve(): string
+    public static function resolve(): ?string
     {
-        return Request::header('User-Agent');
+        /** @var string|null $userAgent */
+        $userAgent = Request::header('User-Agent');
+
+        if (false === \is_string($userAgent)) {
+            return null;
+        }
+
+        return $userAgent;
     }
 }
