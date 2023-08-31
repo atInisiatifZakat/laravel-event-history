@@ -12,5 +12,5 @@ interface HasEventHistories
 
     public function newSyncHistory(string $event, string $description, string $comment = null): void;
 
-    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null, string|null $userAgent = null): void;
+    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null, string $userAgent = null): void;
 }
