@@ -61,5 +61,6 @@ final class CreateEventHistoryUsingListenerTest extends TestCase
 
         $this->assertNull($history->getAttribute('user_id'));
         $this->assertNull($history->getAttribute('comment'));
+        $this->assertNull($history->getAttribute('user_agent'));
     }
 }
