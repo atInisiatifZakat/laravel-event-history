@@ -10,6 +10,7 @@ use Inisiatif\EventHistory\Resolvers\CommentResolver;
 use Inisiatif\EventHistory\Resolvers\UserKeyResolver;
 use Inisiatif\EventHistory\Concerns\HasEventHistories;
 use Inisiatif\EventHistory\Resolvers\IpAddressResolver;
+use Inisiatif\EventHistory\Resolvers\UserAgentResolver;
 use Inisiatif\EventHistory\Concerns\EventHistoryAwareInterface;
 
 final class RecordEventHistoryListener
@@ -39,7 +40,8 @@ final class RecordEventHistoryListener
             $event->getHistoryDescription(),
             CommentResolver::resolve(),
             IpAddressResolver::resolve(),
-            UserKeyResolver::resolve()
+            UserKeyResolver::resolve(),
+            UserAgentResolver::resolve(),
         );
 
         dispatch($job);
