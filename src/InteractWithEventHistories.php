@@ -7,6 +7,7 @@ namespace Inisiatif\EventHistory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Inisiatif\EventHistory\Resolvers\UserKeyResolver;
 use Inisiatif\EventHistory\Resolvers\IpAddressResolver;
+use Inisiatif\EventHistory\Resolvers\UserAgentResolver;
 
 trait InteractWithEventHistories
 {
@@ -17,10 +18,17 @@ trait InteractWithEventHistories
 
     public function newSyncHistory(string $event, string $description, string $comment = null): void
     {
-        $this->newAsyncHistory($event, $description, $comment, IpAddressResolver::resolve(), UserKeyResolver::resolve());
+        $this->newAsyncHistory(
+            $event,
+            $description,
+            $comment,
+            IpAddressResolver::resolve(),
+            UserKeyResolver::resolve(),
+            UserAgentResolver::resolve()
+        );
     }
 
-    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null): void
+    public function newAsyncHistory(string $event, string $description, string $comment = null, string $ipAddress = null, string|int $userId = null, string $userAgent = null): void
     {
         $this->histories()->create([
             'event' => $event,
@@ -28,6 +36,7 @@ trait InteractWithEventHistories
             'comment' => $comment,
             'user_id' => $userId,
             'ip_address' => $ipAddress,
+            'user_agent' => $userAgent,
         ]);
     }
 }
